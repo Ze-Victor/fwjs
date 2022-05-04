@@ -1,21 +1,20 @@
-<h2>{ statement }</h2>
-<div class="options">
-  {#each options as option, index (option)}
-  <button
-    class={ index === selection ? 'selected' : '' }
-    on:click={ e => clicked(index) } >
-    { option }
-  </button>
-{/each}
-
-</div>
+<div class="buttons">
+    <button
+      class={ index === selection ? 'selected' : '' }
+      on:click={ e => clicked(index) } >
+      { buttonText }
+    </button>
+  </div>
 
 <script lang="ts">
+
   import { createEventDispatcher } from 'svelte'
 
-  export let statement: string = 'Enunciado da questão'
-  export let options: string[] = []
+  export let buttonText: string = ''
   export let selection: number
+  export let index: number
+
+  console.log(buttonText)
 
   const dispatcher = createEventDispatcher()
 
@@ -26,11 +25,6 @@
 </script>
 
 <style>
-  h2 {
-    font-weight: normal;
-    font-size: 20pt;
-    margin-top: 0;
-  }
   button {
     margin-right: 10px;
     background-color: #ccc;
@@ -42,7 +36,7 @@
     font-weight: bold;
     background-color: #aaa;
   }
-  .options {
+  .buttons {
     margin-bottom: 10px;
   }
 </style>
